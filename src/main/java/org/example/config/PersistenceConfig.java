@@ -2,12 +2,13 @@ package org.example.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.cfg.AvailableSettings;
-import org.hibernate.cfg.Environment;
+
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -16,12 +17,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-import static java.lang.System.getProperty;
 
 @Configuration
-@PropertySource(value = { "classpath:database/jdbc.properties" })
+@PropertySource(value = {"classpath:/database/jdbc.properties"})
 @EnableTransactionManagement
 public class PersistenceConfig {
+
+    @Autowired
+    private Environment env;
 
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
     private static final String PROPERTY_NAME_HIBERNATE_MAX_FETCH_DEPTH = "hibernate.max_fetch_depth";
@@ -35,10 +38,10 @@ public class PersistenceConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(getProperty("jdbc.url"));
-        dataSource.setUsername(getProperty("jdbc.username"));
-        dataSource.setPassword(getProperty("jdbc.password"));
+        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+        dataSource.setUrl(env.getProperty("jdbc.url"));
+        dataSource.setUsername(env.getProperty("jdbc.username"));
+        dataSource.setPassword(env.getProperty("jdbc.password"));
         return dataSource;
     }
 
@@ -72,10 +75,10 @@ public class PersistenceConfig {
 
         Properties properties = new Properties();
 
-        properties.put(PROPERTY_NAME_HIBERNATE_MAX_FETCH_DEPTH,getProperty(PROPERTY_NAME_HIBERNATE_MAX_FETCH_DEPTH));
-        properties.put(PROPERTY_NAME_HIBERNATE_JDBC_FETCH_SIZE,getProperty(PROPERTY_NAME_HIBERNATE_JDBC_FETCH_SIZE));
-        properties.put(PROPERTY_NAME_HIBERNATE_JDBC_BATCH_SIZE,getProperty(PROPERTY_NAME_HIBERNATE_JDBC_BATCH_SIZE));
-        properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL,getProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
+        properties.put(PROPERTY_NAME_HIBERNATE_MAX_FETCH_DEPTH, env.getProperty(PROPERTY_NAME_HIBERNATE_MAX_FETCH_DEPTH));
+        properties.put(PROPERTY_NAME_HIBERNATE_JDBC_FETCH_SIZE, env.getProperty(PROPERTY_NAME_HIBERNATE_JDBC_FETCH_SIZE));
+        properties.put(PROPERTY_NAME_HIBERNATE_JDBC_BATCH_SIZE, env.getProperty(PROPERTY_NAME_HIBERNATE_JDBC_BATCH_SIZE));
+        properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
 
         properties.put(AvailableSettings.SCHEMA_GEN_DATABASE_ACTION, "none");
         //properties.put(AvailableSettings.USE_CLASS_ENHANCER, "false");
