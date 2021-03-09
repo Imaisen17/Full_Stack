@@ -1,10 +1,13 @@
 package org.example.Model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Proxy(lazy = false)
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

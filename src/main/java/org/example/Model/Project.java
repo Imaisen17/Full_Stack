@@ -1,10 +1,13 @@
 package org.example.Model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="Project")
+@Proxy(lazy = false)
 public class Project {
 
     @Id

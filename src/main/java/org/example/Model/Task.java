@@ -1,11 +1,14 @@
 package org.example.Model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Proxy(lazy = false)
 public class Task {
 
     @Id
