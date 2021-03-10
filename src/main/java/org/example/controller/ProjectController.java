@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api")
 public class ProjectController {
 
     private final ProjectService projectService;
-    private Logger logger;
+    org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ProjectController.class);
+
+
     @Autowired
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
@@ -31,11 +31,11 @@ public class ProjectController {
         Project project = new Project();
         try {
             project = projectService.findById(projectId);
+            return project;
+        } catch (RuntimeException exception) {
+            log.error("Failed to ", exception);
         }
-        catch (RuntimeException exception) {
-            logger.log(Level.ALL, "Project not found");
-        }
-        return project;
+        return null;
     }
 
     @PostMapping("/projects")
@@ -57,9 +57,8 @@ public class ProjectController {
             projectService.findById(projectId);
             projectService.deleteById(projectId);
             return "Deleted project id - " + projectId;
-        }
-        catch (RuntimeException exception) {
-           logger.log(Level.WARNING, "Project not found");
+        } catch (RuntimeException exception) {
+            log.error("Failed to ", exception);
         }
         return "Project with id - " + projectId + " not found";
     }
@@ -70,9 +69,8 @@ public class ProjectController {
             Project project = projectService.findById(projectId);
             project.addTask(task);
             projectService.save(project);
-        }
-        catch (RuntimeException exception) {
-            logger.log(Level.WARNING, "Project not found");
+        } catch (RuntimeException exception) {
+            log.error("Failed to ", exception);
         }
     }
 }

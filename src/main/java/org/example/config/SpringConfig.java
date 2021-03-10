@@ -48,13 +48,15 @@ public class SpringConfig implements WebMvcConfigurer {
         templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
     }
+
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
-    public MappingJackson2HttpMessageConverter jacksonMessageConverter(){
+
+    public MappingJackson2HttpMessageConverter jacksonMessageConverter() {
         MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -64,6 +66,7 @@ public class SpringConfig implements WebMvcConfigurer {
         messageConverter.setObjectMapper(mapper);
         return messageConverter;
     }
+
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         //Here we add our custom-configured HttpMessageConverter

@@ -14,7 +14,8 @@ public class TaskStatusServiceImplementation implements TaskStatusService {
 
     private final TaskStatusRepository taskStatusRepository;
 
-    @Autowired public TaskStatusServiceImplementation(TaskStatusRepository taskStatusRepository) {
+    @Autowired
+    public TaskStatusServiceImplementation(TaskStatusRepository taskStatusRepository) {
         this.taskStatusRepository = taskStatusRepository;
     }
 
@@ -24,8 +25,7 @@ public class TaskStatusServiceImplementation implements TaskStatusService {
         Optional<TaskStatus> status = taskStatusRepository.findById(id);
         if (status.isPresent()) {
             return status.get();
-        }
-        else {
+        } else {
             throw new RuntimeException("Status with id = " + id + " not found");
         }
     }

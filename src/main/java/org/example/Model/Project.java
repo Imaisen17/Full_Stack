@@ -6,25 +6,25 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name="Project")
+@Entity
 @Proxy(lazy = false)
 public class Project {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="short_name")
+    @Column(name = "short_name")
     private String shortName;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy="project", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> tasks;
 
     public Project() {

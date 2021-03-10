@@ -35,8 +35,7 @@ public class ProjectServiceImplementation implements ProjectService {
         Optional<Project> project = projectRepository.findById(id);
         if (project.isPresent()) {
             return project.get();
-        }
-        else {
+        } else {
             throw new RuntimeException("Project with id = " + id + " not found");
         }
     }

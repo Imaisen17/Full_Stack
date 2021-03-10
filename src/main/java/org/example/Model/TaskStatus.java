@@ -5,22 +5,22 @@ import org.hibernate.annotations.Proxy;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name="TaskStatus")
+@Entity
 @Proxy(lazy = false)
 public class TaskStatus {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private int id;
 
-    @Column(name="status_code")
+    @Column(name = "status_code")
     private String statusCode;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy="status", cascade={CascadeType.DETACH,
+    @OneToMany(mappedBy = "status", cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})

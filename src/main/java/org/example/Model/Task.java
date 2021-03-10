@@ -12,31 +12,31 @@ import java.util.List;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private int id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="hours")
+    @Column(name = "hours")
     private float hours;
 
-    @Column(name="date_start")
+    @Column(name = "date_start")
     private Date dateStart;
 
-    @Column(name="date_end")
+    @Column(name = "date_end")
     private Date dateEnd;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="status_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "status_id")
     private TaskStatus status;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="project_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
     private Project project;
 
-    @ManyToMany(mappedBy="tasks", cascade={CascadeType.DETACH,
+    @ManyToMany(mappedBy = "tasks", cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})

@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource(value = { "classpath:database/jdbc.properties" })
+@PropertySource(value = {"classpath:database/jdbc.properties"})
 @EnableTransactionManagement
 public class PersistenceConfig {
 
@@ -86,7 +86,6 @@ public class PersistenceConfig {
         properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
 
         properties.put(AvailableSettings.SCHEMA_GEN_DATABASE_ACTION, "none");
-       // properties.put(AvailableSettings.USE_CLASS_ENHANCER, "false");
         return properties;
     }
 

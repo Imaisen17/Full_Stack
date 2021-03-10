@@ -15,7 +15,8 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    @Autowired EmployeeServiceImplementation(EmployeeRepository employeeRepository) {
+    @Autowired
+    EmployeeServiceImplementation(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
@@ -34,8 +35,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
         Optional<Employee> employee = employeeRepository.findById(id);
         if (employee.isPresent()) {
             return employee.get();
-        }
-        else {
+        } else {
             throw new RuntimeException("Employee with id = " + id + " not found");
         }
     }

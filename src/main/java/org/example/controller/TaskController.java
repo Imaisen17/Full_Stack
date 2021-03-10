@@ -8,15 +8,14 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TaskController {
 
     private final TaskService taskService;
-    private Logger logger;
+    org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(TaskController.class);
+
     @Autowired
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
@@ -32,11 +31,11 @@ public class TaskController {
         Task task = new Task();
         try {
             task = taskService.findById(taskId);
+            return task;
+        } catch (RuntimeException exception) {
+            log.error("Failed to ", exception);
         }
-        catch (RuntimeException exception) {
-            logger.log(Level.WARNING, "Task not found");
-        }
-        return task;
+        return null;
     }
 
     @PostMapping("/tasks")
@@ -58,9 +57,8 @@ public class TaskController {
             taskService.findById(taskId);
             taskService.deleteById(taskId);
             return "Deleted task id - " + taskId;
-        }
-        catch (RuntimeException exception) {
-            logger.log(Level.WARNING, "Task not found");
+        } catch (RuntimeException exception) {
+            log.error("Failed to ", exception);
         }
         return "Task with id - " + taskId + " not found";
     }
@@ -71,9 +69,8 @@ public class TaskController {
             Task task = taskService.findById(taskId);
             task.addEmployee(employee);
             taskService.save(task);
-        }
-        catch (RuntimeException exception) {
-            logger.log(Level.WARNING, "Task not found");
+        } catch (RuntimeException exception) {
+            log.error("Failed to ", exception);
         }
     }
 }

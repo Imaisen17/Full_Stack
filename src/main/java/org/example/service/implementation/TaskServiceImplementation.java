@@ -33,8 +33,7 @@ public class TaskServiceImplementation implements TaskService {
         Optional<Task> task = taskRepository.findById(id);
         if (task.isPresent()) {
             return task.get();
-        }
-        else {
+        } else {
             throw new RuntimeException("Task with id = " + id + " not found");
         }
     }

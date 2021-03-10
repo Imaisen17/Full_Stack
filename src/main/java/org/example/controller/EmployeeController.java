@@ -6,17 +6,15 @@ import org.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
-    private Logger logger;
+    org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(EmployeeController.class);
 
     @Autowired
     public EmployeeController(EmployeeService employeeService) {
@@ -33,11 +31,11 @@ public class EmployeeController {
         Employee employee = new Employee();
         try {
             employee = employeeService.findById(employeeId);
+            return employee;
+        } catch (RuntimeException exception) {
+            log.error("Failed to ",  exception);
         }
-        catch (RuntimeException exception) {
-            exception.printStackTrace();
-        }
-        return employee;
+        return null;
     }
 
     @PostMapping("/employees")
@@ -59,9 +57,8 @@ public class EmployeeController {
             employeeService.findById(employeeId);
             employeeService.deleteById(employeeId);
             return "Deleted employee id - " + employeeId;
-        }
-        catch (RuntimeException exception) {
-            logger.log(Level.WARNING, "Employee not found");
+        } catch (RuntimeException exception) {
+            log.error("Failed to ", exception);
         }
         return "Employee with id - " + employeeId + " not found";
     }
@@ -72,9 +69,8 @@ public class EmployeeController {
             Employee employee = employeeService.findById(employeeId);
             employee.addTask(task);
             employeeService.save(employee);
-        }
-        catch (RuntimeException exception) {
-            logger.log(Level.WARNING, "Employee not found");
+        } catch (RuntimeException exception) {
+            log.error("Failed to ", exception);
         }
     }
 }

@@ -11,28 +11,28 @@ import java.util.List;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
-    @Column(name="surname")
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="fatherland")
+    @Column(name = "fatherland")
     private String fatherland;
 
-    @Column(name="position")
+    @Column(name = "position")
     private String position;
 
-    @ManyToMany(cascade={CascadeType.DETACH,
+    @ManyToMany(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
     @JoinTable(
-            name="EmployeeTask",
-            joinColumns=@JoinColumn(name="task_id"),
-            inverseJoinColumns=@JoinColumn(name="employee_id")
+            name = "EmployeeTask",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id")
     )
     private List<Task> tasks;
 
