@@ -1,4 +1,4 @@
-package org.example.Model;
+package org.qulix.Model;
 
 import org.hibernate.annotations.Proxy;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @Proxy(lazy = false)
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
     @Column(name="surname")

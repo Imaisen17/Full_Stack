@@ -1,4 +1,4 @@
-package org.example.Model;
+package org.qulix.Model;
 
 import org.hibernate.annotations.Proxy;
 

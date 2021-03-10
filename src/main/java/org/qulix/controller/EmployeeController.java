@@ -1,12 +1,11 @@
-package org.example.controller;
+package org.qulix.controller;
 
-import org.example.Model.Employee;
-import org.example.Model.Task;
-import org.example.service.EmployeeService;
+import org.qulix.Model.Employee;
+import org.qulix.Model.Task;
+import org.qulix.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 
 import java.util.List;
 import java.util.logging.Level;

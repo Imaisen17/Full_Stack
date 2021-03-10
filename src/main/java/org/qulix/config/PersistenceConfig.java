@@ -1,4 +1,4 @@
-package org.example.config;
+package org.qulix.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.jpa.AvailableSettings;
@@ -13,7 +13,6 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -29,7 +28,7 @@ public class PersistenceConfig {
     private static final String PROPERTY_NAME_HIBERNATE_JDBC_FETCH_SIZE = "hibernate.jdbc.fetch_size";
     private static final String PROPERTY_NAME_HIBERNATE_JDBC_BATCH_SIZE = "hibernate.jdbc.batch_size";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
-    private static final String[] ENTITYMANAGER_PACKAGES_TO_SCAN = {"org.example.Model"};
+    private static final String[] ENTITYMANAGER_PACKAGES_TO_SCAN = {"org.qulix.Model"};
 
     @Autowired
     private Environment env;
@@ -37,10 +36,10 @@ public class PersistenceConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.username"));
-        dataSource.setPassword(env.getProperty("jdbc.password"));
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         builder
                 .setType(EmbeddedDatabaseType.H2) // HSQL or DERBY
@@ -48,7 +47,7 @@ public class PersistenceConfig {
                 .addScript("dbScripts/initDb.sql")
                 .build();
         return builder.setType(EmbeddedDatabaseType.H2).build();
-        return dataSource;
+
     }
 
     @Bean

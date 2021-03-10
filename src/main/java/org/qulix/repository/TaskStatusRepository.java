@@ -1,12 +1,12 @@
-package org.example.repository;
+package org.qulix.repository;
 
 
-import org.example.Model.Project;
+import org.qulix.Model.TaskStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, Integer> {
+public interface TaskStatusRepository extends JpaRepository<TaskStatus, Integer> {
 }

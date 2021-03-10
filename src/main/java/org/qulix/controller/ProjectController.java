@@ -1,8 +1,8 @@
-package org.example.controller;
+package org.qulix.controller;
 
-import org.example.Model.Project;
-import org.example.Model.Task;
-import org.example.service.ProjectService;
+import org.qulix.Model.Project;
+import org.qulix.Model.Task;
+import org.qulix.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +33,7 @@ public class ProjectController {
             project = projectService.findById(projectId);
         }
         catch (RuntimeException exception) {
-            exception.printStackTrace();
+            logger.log(Level.ALL, "Project not found");
         }
         return project;
     }
