@@ -1,8 +1,8 @@
-package org.qulix.service.implementation;
+package org.example.service.implementation;
 
-import org.qulix.Model.TaskStatus;
-import org.qulix.repository.TaskStatusRepository;
-import org.qulix.service.TaskStatusService;
+import org.example.Model.TaskStatus;
+import org.example.repository.TaskStatusRepository;
+import org.example.service.TaskStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

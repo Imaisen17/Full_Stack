@@ -1,7 +1,7 @@
-package org.qulix.service;
+package org.example.service;
 
 
-import org.qulix.Model.Task;
+import org.example.Model.Task;
 
 import java.util.List;
 

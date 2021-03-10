@@ -1,8 +1,8 @@
-package org.qulix.service.implementation;
+package org.example.service.implementation;
 
-import org.qulix.Model.Project;
-import org.qulix.repository.ProjectRepository;
-import org.qulix.service.ProjectService;
+import org.example.Model.Project;
+import org.example.repository.ProjectRepository;
+import org.example.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

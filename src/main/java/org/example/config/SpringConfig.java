@@ -1,4 +1,4 @@
-package org.qulix.config;
+package org.example.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -21,8 +21,8 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import java.util.List;
 
 @Configuration
-@EnableJpaRepositories("org.qulix.repository")
-@ComponentScan("org.qulix")
+@EnableJpaRepositories("org.example.repository")
+@ComponentScan("org.example")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;

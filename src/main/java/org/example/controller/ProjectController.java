@@ -1,8 +1,8 @@
-package org.qulix.controller;
+package org.example.controller;
 
-import org.qulix.Model.Project;
-import org.qulix.Model.Task;
-import org.qulix.service.ProjectService;
+import org.example.Model.Project;
+import org.example.Model.Task;
+import org.example.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

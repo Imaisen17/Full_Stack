@@ -1,4 +1,4 @@
-package org.qulix.config;
+package org.example.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.jpa.AvailableSettings;
@@ -28,7 +28,7 @@ public class PersistenceConfig {
     private static final String PROPERTY_NAME_HIBERNATE_JDBC_FETCH_SIZE = "hibernate.jdbc.fetch_size";
     private static final String PROPERTY_NAME_HIBERNATE_JDBC_BATCH_SIZE = "hibernate.jdbc.batch_size";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
-    private static final String[] ENTITYMANAGER_PACKAGES_TO_SCAN = {"org.qulix.Model"};
+    private static final String[] ENTITYMANAGER_PACKAGES_TO_SCAN = {"org.example.Model"};
 
     @Autowired
     private Environment env;

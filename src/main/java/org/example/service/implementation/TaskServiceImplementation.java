@@ -1,8 +1,8 @@
-package org.qulix.service.implementation;
+package org.example.service.implementation;
 
-import org.qulix.Model.Task;
-import org.qulix.repository.TaskRepository;
-import org.qulix.service.TaskService;
+import org.example.Model.Task;
+import org.example.repository.TaskRepository;
+import org.example.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 ;import java.util.List;

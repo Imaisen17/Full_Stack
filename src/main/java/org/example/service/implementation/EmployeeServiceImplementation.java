@@ -1,8 +1,8 @@
-package org.qulix.service.implementation;
+package org.example.service.implementation;
 
-import org.qulix.Model.Employee;
-import org.qulix.repository.EmployeeRepository;
-import org.qulix.service.EmployeeService;
+import org.example.Model.Employee;
+import org.example.repository.EmployeeRepository;
+import org.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package org.qulix.service;
+package org.example.service;
 
 
-import org.qulix.Model.TaskStatus;
+import org.example.Model.TaskStatus;
 
 public interface TaskStatusService {
 
