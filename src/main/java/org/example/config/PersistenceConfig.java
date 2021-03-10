@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -39,6 +41,13 @@ public class PersistenceConfig {
         dataSource.setUrl(env.getProperty("jdbc.url"));
         dataSource.setUsername(env.getProperty("jdbc.username"));
         dataSource.setPassword(env.getProperty("jdbc.password"));
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        builder
+                .setType(EmbeddedDatabaseType.H2) // HSQL or DERBY
+                .addScript("dbScripts/create.sql")
+                .addScript("dbScripts/initDb.sql")
+                .build();
+        return builder.setType(EmbeddedDatabaseType.H2).build();
         return dataSource;
     }
 
