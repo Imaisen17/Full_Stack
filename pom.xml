@@ -135,13 +135,6 @@
             <version>2.12.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl
-        <dependency>
-          <groupId>org.codehaus.jackson</groupId>
-          <artifactId>jackson-mapper-asl</artifactId>
-          <version>1.9.13</version>
-        </dependency>-->
-
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-hibernate5 -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -173,7 +166,6 @@
             <artifactId>spring-data-rest-webmvc</artifactId>
             <version>3.4.5</version>
         </dependency>
-
 
     </dependencies>
 
@@ -211,13 +203,23 @@
                     <version>2.8.2</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.tomcat.maven</groupId>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
-                    <version>2.1</version>
+                    <groupId>org.codehaus.cargo</groupId>
+                    <artifactId>cargo-maven3-plugin</artifactId>
+                    <version>1.9.2</version>
                     <configuration>
-                        <url>http://localhost:8080/manager/text</url>
-                        <server>my-tomcat</server>
-                        <path>/myapp</path>
+                        <container>
+                            <containerId>tomcat9x</containerId>
+                            <type>embedded</type>
+                        </container>
+                        <deployables>
+                            <deployable>
+                                <type>war</type>
+                                <location>${project.build.directory}/${project.build.finalName}.war</location>
+                                <properties>
+                                    <context>/</context>
+                                </properties>
+                            </deployable>
+                        </deployables>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -240,14 +242,8 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-            <plugin>
-            <groupId>org.codehaus.cargo</groupId>
-            <artifactId>cargo-maven3-plugin</artifactId>
-            <version>1.9.3-SNAPSHOT</version>
-            </plugin>
 
         </plugins>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -259,31 +255,4 @@
 
     </build>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-snapshots</id>
-            <name>Sonatype Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
-    <repositories>
-        <repository>
-            <id>sonatype-snapshots</id>
-            <name>Sonatype Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>
