@@ -1,0 +1,41 @@
+.table-record{
+    display: grid;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.projects{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.tasks{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.employees{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.table-btn:hover{
+    transition: .5s;
+    background-color: #050000;
+}
+
+.table-btn{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0 5px;
+    align-self: center;
+    justify-self: center;
+}
+
+.delete{
+    background-color: #c83338;
+}
+
+.update{
+    background-color: #1484b8;
+}

@@ -1,0 +1,50 @@
+.add-new-row{
+    width: 200px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.add-btn{
+    height: 30px;
+    width: 30px;
+    background-color: #17b055;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #17b055;
+    border-radius: 100%;
+    outline: none;
+}
+
+.hide-btn{
+    background-color: #1484b8;
+    color: #ffffff;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.add-btn:hover, .table-btn:hover{
+    transition: .5s;
+    background-color: #050000;
+}
+
+.table-btn{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0 5px;
+}
+
+.delete{
+    background-color: #c83338;
+}
+
+.update{
+    background-color: #1484b8;
+}

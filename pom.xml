@@ -170,6 +170,8 @@
     </dependencies>
 
     <build>
+
+
         <finalName>MavenMVCQulix</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
@@ -248,7 +250,7 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <excludes>
-                    <exclude>static/node_modules/**/*.*</exclude>
+                    <exclude>static/front/node_modules/**/*.*</exclude>
                 </excludes>
             </resource>
         </resources>

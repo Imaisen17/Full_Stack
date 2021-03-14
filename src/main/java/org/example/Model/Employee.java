@@ -25,7 +25,7 @@ public class Employee {
     @Column(name = "position")
     private String position;
 
-    @ManyToMany(cascade = {CascadeType.DETACH,
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})

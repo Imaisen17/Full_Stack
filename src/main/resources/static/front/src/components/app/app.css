@@ -1,0 +1,28 @@
+h1{
+    margin: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 55px;
+    font-weight: bold;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 50px;
+}
+
+.container:hover{
+    transition: 1s;
+    border: 3px solid #dbaf49;
+    box-shadow: 0 0 40px #dbaf49;
+}
+
+.column-titles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
