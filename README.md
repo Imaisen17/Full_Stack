@@ -14,3 +14,9 @@ Training Task Project
     8.4 http://localhost:8080/api/projects/{projectId} (GET, DELETE, PUT)
     8.5 http://localhost:8080/api/tasks (GET, POST, PUT)
     8.6 http://localhost:8080/api/tasks/{taskId} (GET, DELETE, PUT)
+9. Front launch
+    9.1 Install Node.js (https://nodejs.org/en/)
+    9.2 In project go to folder with front side (src/main/resources/front)
+    9.3 Use command: npm install
+    9.4 Use command: npm start
+    9.5 Go to the site http://localhost:3000 (On Browser)
