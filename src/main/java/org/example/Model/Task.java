@@ -36,10 +36,7 @@ public class Task {
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @ManyToMany(mappedBy = "tasks", cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH},fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "tasks", cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     private List<Employee> employees;
 
     public Task() {
