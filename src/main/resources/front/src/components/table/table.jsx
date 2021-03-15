@@ -7,7 +7,7 @@ import NewTableRecord from "../NewTableRecord/NewTableRecord";
 
 export default function Table(props) {
 
-    const {data=[{}], recordClassName} = props;
+    const {data=[{}], recordClassName, setTable} = props;
     let isFirstRowChange = true;
     const [createRecordInput,setCreateRecordInput]=useState(false);
 
@@ -25,17 +25,29 @@ export default function Table(props) {
                     isFirstRowChange=false;
                     isFirstRow=true;
                 }
-                const elementValues = Object.values(element);
                 const columnTitles = Object.keys(element);
                 columnTitles.push("Remove", "Edit");
                 return (
                     <>
                         {
                             isFirstRow ?
-                                <TableRecord recordClassName={recordClassName} elementValues={columnTitles} isColumnTitles={true}/>
+                                <TableRecord
+                                    recordClassName={recordClassName}
+                                    element={Object.keys(element)}
+                                    isColumnTitles={true}
+                                    setTable={setTable}
+                                    table={data}
+                                />
                                 : null
                         }
-                        <TableRecord recordClassName={recordClassName} key={shortId.generate()} elementValues={elementValues} isColumnTitles={false}/>
+                        <TableRecord
+                            recordClassName={recordClassName}
+                            key={shortId.generate()}
+                            element={element}
+                            isColumnTitles={false}
+                            setTable={setTable}
+                            table={data}
+                        />
                     </>
                 )
             })
@@ -51,6 +63,8 @@ export default function Table(props) {
             <NewTableRecord
                 inputs={data[0]?data[0]:{}}
                 createRecordInput={createRecordInput}
+                setTable={setTable}
+                table={data}
             />
         </>
     );

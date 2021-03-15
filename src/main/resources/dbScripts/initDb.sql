@@ -15,11 +15,11 @@ insert into PROJECT values ( 3, 'Qulix project', 'QP', 'Some info' );
 insert into PROJECT values ( 4, 'Game Project', 'GP', 'Some info' );
 insert into PROJECT values ( 5, 'Home Project', 'HP', 'Some info' );
 
-insert into TASK values ( 1, 'Main task', 4.0, CURRENT_DATE ,CURRENT_DATE,  2, 3 );
-insert into TASK values ( 2, 'Second task', 4.0, CURRENT_DATE , CURRENT_DATE, 1, 2 );
-insert into TASK values ( 3, 'Third task', 4.0, CURRENT_DATE , CURRENT_DATE,3, 1 );
-insert into TASK values ( 4, '4-th task', 4.0, CURRENT_DATE ,CURRENT_DATE, 1, 4 );
-insert into TASK values ( 5, '5-th task', 4.0, CURRENT_DATE ,CURRENT_DATE, 2, 5 );
+insert into TASK values ( 1, 'Main task', 4.0, CURRENT_DATE ,null ,  2, 3 );
+insert into TASK values ( 2, 'Second task', 4.0, CURRENT_DATE , null , 1, 2 );
+insert into TASK values ( 3, 'Third task', 4.0, CURRENT_DATE , null ,3, 1 );
+insert into TASK values ( 4, '4-th task', 4.0, CURRENT_DATE ,null , 1, 4 );
+insert into TASK values ( 5, '5-th task', 4.0, CURRENT_DATE ,null , 2, 5 );
 
 insert into EMPLOYEETASK values ( 1, 1 );
 insert into EMPLOYEETASK values ( 2, 2 );

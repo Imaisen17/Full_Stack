@@ -17,7 +17,7 @@ export default function NewTableRecord(props) {
         <div className={createRecordInput ? "show" : "hidden"}>
             {
                 inputsKeys.map(key => {
-                    if (key==='id'){
+                    if (key==='id' || Array.isArray(inputs[key])){
                         return null
                     }
                     return (
