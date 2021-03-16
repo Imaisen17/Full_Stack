@@ -167,6 +167,7 @@
             <version>3.4.5</version>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -250,7 +251,7 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <excludes>
-                    <exclude>static/front/node_modules/**/*.*</exclude>
+                    <exclude>front/node_modules/**/*.*</exclude>
                 </excludes>
             </resource>
         </resources>

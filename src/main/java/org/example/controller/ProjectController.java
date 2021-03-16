@@ -3,9 +3,12 @@ package org.example.controller;
 import org.example.Model.Project;
 import org.example.Model.Task;
 import org.example.service.ProjectService;
+import org.example.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,6 +24,8 @@ public class ProjectController {
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
     }
+
+
 
     @GetMapping("/projects")
     public List<Project> getProjects() {
@@ -40,7 +45,7 @@ public class ProjectController {
     }
 
     @PostMapping("/projects")
-    public Project addProject(@RequestBody Project project) {
+    public Project addProject(@Valid @RequestBody Project project) {
         project.setId(0);
         projectService.save(project);
         return project;

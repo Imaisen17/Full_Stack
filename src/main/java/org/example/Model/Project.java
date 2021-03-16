@@ -3,6 +3,9 @@ package org.example.Model;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,17 +17,17 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
+    @NotEmpty(message = "Should not be empty")
     @Column(name = "name")
     private String name;
-
+    @NotEmpty(message = "Should not be empty")
     @Column(name = "short_name")
     private String shortName;
-
+    @NotEmpty(message = "Should not be empty")
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "project", cascade = {CascadeType.ALL})
     private List<Task> tasks;
 
     public Project() {

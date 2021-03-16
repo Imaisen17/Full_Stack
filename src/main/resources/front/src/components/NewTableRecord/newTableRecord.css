@@ -1,0 +1,13 @@
+.show{
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
+
+.send-new-record-btn{
+    background-color: #17b055;
+    color: #fff;
+    padding: 10px;
+}
