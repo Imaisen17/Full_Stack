@@ -1,31 +1,75 @@
-import React from "react";
+import React, {useState, useMemo,useEffect} from "react";
 import shortId from 'short-id';
 
 import "./newTableRecord.css";
+import TasksService from "../../services/tasks-service";
+import ProjectsService from "../../services/projects-service";
+import EmployeesService from "../../services/employees-service";
+import NewRecordRowComponent from "../NewRecordRowComponent/NewRecordRowComponent";
 
 export default function NewTableRecord(props) {
 
-    const {inputs, createRecordInput} = props;
-    console.log(inputs);
+    const tasksService = useMemo(() => new TasksService(), []);
+    const projectsService = useMemo(() => new ProjectsService(), []);
+    const employeesService = useMemo(() => new EmployeesService(), []);
+
+    const {inputs, createRecordInput, tableName, setTable} = props;
     const inputsKeys = Object.keys(inputs);
 
-    const sendNewRecord=async ()=>{
-        console.log("Send Record");
+    const sendNewRecord = async () => {
+        switch (tableName) {
+            case 'projects':
+                await projectsService.saveProject(newRecordValues);
+                break;
+            case 'employees':
+                await employeesService.saveEmployee(newRecordValues);
+                break;
+            case 'tasks':
+                await tasksService.saveTask(newRecordValues);
+                break;
+            default:
+                console.log('saving failed');
+        }
+        setTable([])
+        setNewRecordValues(newRecordValuesDefault);
+    }
+
+    let newRecordValuesDefault = {};
+
+    const [newRecordValues, setNewRecordValues] = useState(newRecordValuesDefault);
+
+    useEffect(()=>{
+        newRecordValuesDefault={};
+        inputsKeys.forEach(key => {
+            newRecordValuesDefault[key]='';
+        })
+    },[])
+
+    useEffect(()=>{
+        newRecordValuesDefault={};
+        inputsKeys.forEach(key => {
+            newRecordValuesDefault[key]='';
+        })
+    },[tableName])
+
+    const changeObjValue = (key,value) => {
+        setNewRecordValues({
+            ...newRecordValues,
+            [key]: value,
+        })
     }
 
     return (
         <div className={createRecordInput ? "show" : "hidden"}>
             {
                 inputsKeys.map(key => {
-                    if (key==='id' || Array.isArray(inputs[key])){
+                    if (key === 'id' || Array.isArray(inputs[key]) || inputs[key]===null) {
                         return null
                     }
                     return (
-                        <input
-                            className="new-record-input"
-                            key={shortId.generate()}
-                            type="text"
-                            placeholder={key}
+                        <NewRecordRowComponent
+                            recordKey={key}
+                            changeObjValue={changeObjValue}
                         />
                     );
                 })

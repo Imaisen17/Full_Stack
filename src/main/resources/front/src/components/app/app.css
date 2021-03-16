@@ -13,10 +13,6 @@ h1{
     padding: 30px;
     background-color: #ffffff;
     border-radius: 50px;
-}
-
-.container:hover{
-    transition: 1s;
     border: 3px solid #dbaf49;
     box-shadow: 0 0 40px #dbaf49;
 }

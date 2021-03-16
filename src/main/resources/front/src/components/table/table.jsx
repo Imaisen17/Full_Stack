@@ -62,6 +62,7 @@ export default function Table(props) {
             </div>
             <NewTableRecord
                 inputs={data[0]?data[0]:{}}
+                tableName={recordClassName}
                 createRecordInput={createRecordInput}
                 setTable={setTable}
                 table={data}

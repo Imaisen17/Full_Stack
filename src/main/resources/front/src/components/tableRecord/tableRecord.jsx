@@ -57,7 +57,7 @@ export default function TableRecord(props) {
             {
                 elementValues.map(value => {
                     if (!value) {
-                        value = ['debug', 'development', 'testing'];
+                        return <select></select>;
                     }
                     console.log("Value: ", value);
                     if (Array.isArray(value)) {
